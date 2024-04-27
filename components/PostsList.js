@@ -24,9 +24,13 @@ const PostsList = ({selectedPostCategory}) => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
-    const filteredPosts=data.posts.nodes.filter( post=>
-        post.categories.nodes.some(categories=>categories.id === selectedPostCategory)
-    )
+    let filteredPosts = data.posts.nodes;
+    if (selectedPostCategory) {
+        filteredPosts=data.posts.nodes.filter( post=>
+            post.categories.nodes.some(categories=>categories.id === selectedPostCategory)
+        )
+    }
+    
 
     return (
         <div>

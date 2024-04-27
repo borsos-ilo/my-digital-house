@@ -1,5 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
+import React from 'react';
 
+// GraphQL query
 const GET_POSTS = gql`
 query GetPosts {
     posts {
@@ -18,23 +20,40 @@ query GetPosts {
 }
 `;
 
-const PostsList = ({selectedPostCategory}) => {
-    const { loading, error, data } = useQuery(GET_POSTS);
+// TypeScript interfaces
+interface Category {
+    id: string;
+    name: string;
+}
+
+interface Post {
+    id: string;
+    title: string;
+    content: string;
+    categories: {
+        nodes: Category[];
+    };
+}
+
+interface PostData {
+    posts: {
+        nodes: Post[];
+    };
+}
+
+
+
+// Component
+const PostsList: React.FC = () => {
+    const { loading, error, data } = useQuery<PostData>(GET_POSTS);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
-    let filteredPosts = data.posts.nodes;
-    if (selectedPostCategory) {
-        filteredPosts=data.posts.nodes.filter( post=>
-            post.categories.nodes.some(categories=>categories.id === selectedPostCategory)
-        )
-    }
-    
 
     return (
         <div>
-            {filteredPosts.map((post) => (
+            {data?.posts.nodes.map((post) => (
                 <div key={post.id}>
                     <h2>{post.title}</h2>
                     <div dangerouslySetInnerHTML={{ __html: post.content }} />

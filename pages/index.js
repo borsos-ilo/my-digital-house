@@ -2,12 +2,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import NavBar from '../components/NavBar'
 import styles from '../styles/Home.module.css'
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import PostsList from '../components/PostsList';
 
 
 
 export default function Home() {
+  const [postCategory, setPostCategory]=useState(null)
+  const handlePostCategorySelect = (postCategoryId) => {
+    console.log("Selected category: ", postCategoryId)
+    setPostCategory(postCategoryId)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -24,8 +29,8 @@ export default function Home() {
         <p className={styles.description}>
           Witaj w moim wirtualnym domu
         </p>
-        <NavBar/>
-        <PostsList/>
+        <NavBar onPostCategorySelect={handlePostCategorySelect}/>
+        <PostsList selectedPostCategory={postCategory}/>
         <div>
 
         </div>

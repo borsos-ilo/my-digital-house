@@ -1,5 +1,4 @@
 // components/NavBar/CategoryButton.tsx
-import Link from 'next/link';
 import React, { ReactNode } from 'react';
 
 // we define type: It accepts anything that can be rendered: numbers, strings, elements or an array (or fragment) containing these types.

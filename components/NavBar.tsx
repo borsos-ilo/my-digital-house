@@ -1,41 +1,8 @@
 // components/NavBar/NavBar.js
 import { useQuery, gql } from '@apollo/client';
 import CategoryButton from './CategoryButton';
-import Link from 'next/link';
-import React, {useState, ReactNode, useContext} from 'react';
-
-
-
-
-const GET_CATEGORIES = gql`
-  query GetCategories {
-    categories {
-      nodes {
-        id
-        name
-        slug
-        description
-      }
-    }
-  }
-`;
-
-interface Category {
-    id: string;
-    name: string;
-    slug: string;
-    description: string;
-}
-
-interface CategoriesData {
-    categories: {
-        nodes: Category[];
-    }
-}
-
-interface CategoriesError {
-    message: string;
-}
+import React from 'react';
+import { GET_CATEGORIES, CategoriesData, CategoriesError } from '@/lib/queries/GetCategories';
 
 const NavBar: React.FC = () => {
     const { loading, error, data } = useQuery<CategoriesData, CategoriesError>(GET_CATEGORIES);

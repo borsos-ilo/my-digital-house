@@ -1,46 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import React from 'react';
-
-// GraphQL query
-const GET_POSTS = gql`
-query GetPosts {
-    posts {
-        nodes {
-            id
-            title
-            content
-            categories {
-                nodes {
-                    id
-                    name
-                }
-            }
-        }
-    }
-}
-`;
-
-// TypeScript interfaces
-interface Category {
-    id: string;
-    name: string;
-}
-
-interface Post {
-    id: string;
-    title: string;
-    content: string;
-    categories: {
-        nodes: Category[];
-    };
-}
-
-interface PostData {
-    posts: {
-        nodes: Post[];
-    };
-}
-
+import { GET_POSTS, PostData } from '@/lib/queries/GetPosts';
 
 
 // Component

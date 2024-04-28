@@ -9,6 +9,7 @@ query GetPosts {
             id
             title
             content
+            excerpt
             categories {
                 nodes {
                     id
@@ -30,6 +31,7 @@ export interface Post {
     id: string;
     title: string;
     content: string;
+    excerpt: string;
     categories: {
         nodes: Category[];
     };

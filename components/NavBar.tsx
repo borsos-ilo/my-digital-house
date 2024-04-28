@@ -4,7 +4,7 @@ import CategoryButton from './CategoryButton';
 import React from 'react';
 import { GET_CATEGORIES, CategoriesData, CategoriesError } from '@/lib/queries/GetCategories';
 
-interface NavBarProps {
+type NavBarProps = {
     onCategorySelect: (id: string) => void;
 }
 
@@ -14,9 +14,12 @@ const NavBar: React.FC<NavBarProps> = ({ onCategorySelect }) => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
+
     return (
         <nav>
-            {data && data.categories.nodes.map((category) => (
+            {data && data.categories.nodes
+            .filter(category => category.name!=="Uncategorized")
+            .map((category) => (
                 <CategoryButton key={category.id} onClick={() => onCategorySelect(category.id)} >
                     {category.name}
                 </CategoryButton>

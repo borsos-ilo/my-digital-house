@@ -5,6 +5,7 @@ import React, { ReactNode } from 'react';
 type CategoryButtonProps = {
     // if CategoryButton was taking more props, we'd need to add all of them here and define their type
     children: ReactNode;
+    onClick: () => void
 };
 
 
@@ -12,9 +13,9 @@ type CategoryButtonProps = {
 // By using React.FC<CategoryButtonProps>, you are using the generic FC (Functional Component) type from React, 
 // which *automatically includes children* even though we're explicitly defining it here for clarity and to show 
 // how you might expand this type with more props in the future.
-const CategoryButton: React.FC<CategoryButtonProps> = ({ children }) => {
+const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick }) => {
     return (
-        <button>
+        <button onClick={onClick}>
             {children}
         </button>
     );

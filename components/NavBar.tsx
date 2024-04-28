@@ -6,6 +6,7 @@ import { GET_CATEGORIES, CategoriesData, CategoriesError } from '@/lib/queries/G
 
 type NavBarProps = {
     onCategorySelect: (id: string) => void;
+    className?: string;
 }
 
 const NavBar: React.FC<NavBarProps> = ({ onCategorySelect }) => {
@@ -20,7 +21,7 @@ const NavBar: React.FC<NavBarProps> = ({ onCategorySelect }) => {
             {data && data.categories.nodes
             .filter(category => category.name!=="Uncategorized")
             .map((category) => (
-                <CategoryButton key={category.id} onClick={() => onCategorySelect(category.id)} >
+                <CategoryButton key={category.id} className="font-pd" onClick={() => onCategorySelect(category.id)} >
                     {category.name}
                 </CategoryButton>
             ))}

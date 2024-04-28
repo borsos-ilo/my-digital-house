@@ -16,7 +16,7 @@ type CategoryButtonProps = {
 // how you might expand this type with more props in the future.
 const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick, className }) => {
     return (
-        <button onClick={onClick} className="p-4 hover:underline decoration-cyan-300">
+        <button onClick={onClick} className="p-4 hover:underline decoration-cyan-300 ">
             {children}
         </button>
     );

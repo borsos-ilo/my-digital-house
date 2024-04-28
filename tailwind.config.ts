@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         // // domine: ["Domine", "serif"],
-        pd: ["Playfair\\ Display", "serif"]
+        pd: ["Playfair\ Display", "serif"]
       },
     },
   },

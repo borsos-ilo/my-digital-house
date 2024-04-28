@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        domine: ["Domine", "serif"],
+        // // domine: ["Domine", "serif"],
+        pd: ["Playfair\\ Display", "serif"]
       },
     },
   },

@@ -10,6 +10,7 @@ query GetPosts {
             title
             content
             excerpt
+            slug
             categories {
                 nodes {
                     id
@@ -32,6 +33,7 @@ export interface Post {
     title: string;
     content: string;
     excerpt: string;
+    slug: string;
     categories: {
         nodes: Category[];
     };

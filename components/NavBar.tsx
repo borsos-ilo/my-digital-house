@@ -21,7 +21,7 @@ const NavBar: React.FC<NavBarProps> = ({ onCategorySelect }) => {
             {data && data.categories.nodes
             .filter(category => category.name!=="Uncategorized")
             .map((category) => (
-                <CategoryButton key={category.id} className="font-pd" onClick={() => onCategorySelect(category.id)} >
+                <CategoryButton key={category.id} onClick={() => onCategorySelect(category.id)} >
                     {category.name}
                 </CategoryButton>
             ))}

@@ -18,8 +18,8 @@ const PostsList: React.FC<{ category: string | null }> = ({ category }) => {
         <div>
             {filteredPosts?.map((post) => (
                 <div key={post.id}>
-                    <h2>{post.title}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                    <h2 className='font-pd text-2xl'>{post.title}</h2>
+                    <div className='font-sofia' dangerouslySetInnerHTML={{ __html: post.content }} />
                 </div>
             ))}
         </div>

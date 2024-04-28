@@ -10,10 +10,11 @@ const config: Config = {
     extend: {
       fontFamily: {
         // // domine: ["Domine", "serif"],
-        pd: ["Playfair\ Display", "serif"]
-      },
+        'pd': ['"Playfair Display"', 'serif'], // Previously added
+        'sofia': ['"Sofia Sans"', 'sans-serif'], // New addition
     },
   },
   plugins: [],
+}
 };
 export default config;

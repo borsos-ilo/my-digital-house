@@ -2,6 +2,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import client from '@/lib/apolloClient';
 import { GET_POST, PostData } from '@/lib/queries/GetPost';
 import { ParsedUrlQuery } from 'querystring';
+import TopNav from '@/components/TopNav';
 
 interface IParams extends ParsedUrlQuery {
     slug: string;
@@ -45,10 +46,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
     return (
-        <article className='grid grid-cols-1  justify-center p-3 items-center text-center'>
-            <h1 className='font-pd text-2xl hover:underline decoration-cyan-300'>{post.title}</h1>
-            <div className='font-sofia' dangerouslySetInnerHTML={{ __html: post.content }} />
-        </article>
+        <div>
+            <TopNav/>
+            <article className='grid grid-cols-1  justify-center p-3 items-center text-center'>
+                <h1 className='font-pd text-2xl hover:underline decoration-cyan-300'>{post.title}</h1>
+                <div className='font-sofia' dangerouslySetInnerHTML={{ __html: post.content }} />
+            </article>
+        </div>
     );
 };
 

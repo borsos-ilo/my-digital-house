@@ -45,9 +45,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
     return (
-        <article>
-            <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <article className='grid grid-cols-1  justify-center p-3 items-center text-center'>
+            <h1 className='font-pd text-2xl hover:underline decoration-cyan-300'>{post.title}</h1>
+            <div className='font-sofia' dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
     );
 };

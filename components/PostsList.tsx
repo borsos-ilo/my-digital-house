@@ -20,10 +20,10 @@ const PostsList: React.FC<PostListProps> = ({ category, className }) => {
     ) : data?.posts.nodes;
 
     return (
-        <div className={`grid grid-cols-3 gap-4 border`}>
+        <div className={`grid grid-cols-3 gap-4`}>
             {filteredPosts?.map((post) => (
-                <div key={post.id}>
-                    <h2 className='font-pd text-2xl'>{post.title}</h2>
+                <div className={`hover:border-l border-cyan-500 p-2 hover:bg-zinc-100`} key={post.id}>
+                    <h2 className='font-pd text-2xl hover:underline decoration-cyan-300'>{post.title}</h2>
                     <div className='font-sofia' dangerouslySetInnerHTML={{ __html: post.excerpt }} />
                 </div>
             ))}

@@ -12,6 +12,7 @@ const config: Config = {
         // // domine: ["Domine", "serif"],
         'pd': ['"Playfair Display"', 'serif'], // Previously added
         'sofia': ['"Sofia Sans"', 'sans-serif'], // New addition
+        'lato': ['Lato', 'sans-serif'],
     },
   },
   plugins: [],

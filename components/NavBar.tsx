@@ -1,7 +1,7 @@
 // components/NavBar/NavBar.js
 import { useQuery, gql } from '@apollo/client';
 import CategoryButton from './CategoryButton';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { GET_CATEGORIES, CategoriesData, CategoriesError } from '@/lib/queries/GetCategories';
 
 type NavBarProps = {
@@ -19,7 +19,7 @@ const NavBar: React.FC<NavBarProps> = ({ onCategorySelect }) => {
 
 
     return (
-        <nav>
+        <nav className='grid grid-cols-7'>
             {data && data.categories.nodes
             .filter(category => category.name!=="Uncategorized")
             .map((category, index) => (

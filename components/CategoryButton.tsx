@@ -16,7 +16,8 @@ type CategoryButtonProps = {
 // which *automatically includes children* even though we're explicitly defining it here for clarity and to show 
 // how you might expand this type with more props in the future.
 const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick, className, position }) => {
-    const colors: string[] = ['text-red-500', 'text-blue-500', 'text-green-500', 'text-yellow-500', 'text-purple-500', 'text-cyan-500', 'text-grey-500'];
+    const colors: string[] = ['text-red-500', 'text-amber-500', 'text-green-500', 'text-cyan-500', 'text-indigo-500', 'text-pink-500', 'text-zinc-500'];
+    const decorationColors: string[] = ['decoration-red-200', 'decoration-amber-200', 'decoration-green-200', 'decoration-cyan-200', 'decoration-indigo-200', 'decoration-pink-200', 'decoration-zinc-200'];
     const [color, setColor] = useState<number>(position)
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -26,7 +27,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick, clas
         return () => clearInterval(intervalId); // Clean up the interval on component unmount
     }, []);
     return (
-        <button onClick={onClick} className={`p-4 hover:underline ${colors[color]} decoration-cyan-300 font-sofia`}>
+        <button onClick={onClick} className={`p-4 hover:underline  ${colors[color]} ${decorationColors[color]} $ font-lato`}>
             {children}
         </button>
     );

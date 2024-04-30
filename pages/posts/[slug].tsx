@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import client from '@/lib/apolloClient';
 import { GET_POST, PostData } from '@/lib/queries/GetPost';
+import parse, {domToReact, Element} from 'html-react-parser';
 import { ParsedUrlQuery } from 'querystring';
 import TopNav from '@/components/TopNav';
 
@@ -24,6 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     }
 
     try {
+        // make query
         const { data } = await client.query({
             query: GET_POST,
             variables: { slug: params.slug }
@@ -32,9 +34,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         if (!data || !data.postBy) {
             return { notFound: true };
         }
-
+        // I think this is where I should parse the data
         return {
+            // why this syntax? I need to learn more about getServerSideProps, maybe it's baked there
+            // I guess what getServerSideProps returns is... props (duh) and this is the way to return them
             props: {
+                //post details
                 post: data.postBy,
             },
         };
@@ -44,13 +49,28 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     }
 };
 
+// transform returned props
+const styling = {
+    replace: (domNode: any) => {
+        if (domNode instanceof Element && domNode.type==='tag') {
+            switch(domNode.name) {
+                case 'p': domNode.attribs.className = (domNode.attribs.className || '') + ' font-sofia text-left'; break;
+                case 'h3': domNode.attribs.className = (domNode.attribs.className || '') + ' text-xl'; break;
+                case 'ol': domNode.attribs.className = (domNode.attribs.className || '') + ' list-decimal text-left'; break;
+            }
+        }
+    }
+}
+
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
+    const parsedContent = parse(post.content, styling)
+    console.log(parsedContent)
     return (
-        <div>
+        <div className='p-20'>
             <TopNav/>
             <article className='grid grid-cols-1  justify-center p-3 items-center text-center'>
                 <h1 className='font-pd text-2xl hover:underline decoration-cyan-300'>{post.title}</h1>
-                <div className='font-sofia' dangerouslySetInnerHTML={{ __html: post.content }} />
+                <div> {parsedContent} </div>
             </article>
         </div>
     );

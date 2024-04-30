@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url('https://fonts.googxleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+@layer utilities {
+  .post-content p {
+    @apply text-pink-400
+  } 
+  .post-content h2 {
+    @apply text-lg text-cyan-300 hover:text-cyan-600
+  }
+}
 
 :root {
 }

@@ -49,28 +49,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     }
 };
 
-// transform returned props
-const styling = {
-    replace: (domNode: any) => {
-        if (domNode instanceof Element && domNode.type==='tag') {
-            switch(domNode.name) {
-                case 'p': domNode.attribs.className = (domNode.attribs.className || '') + ' font-sofia text-left'; break;
-                case 'h3': domNode.attribs.className = (domNode.attribs.className || '') + ' text-xl'; break;
-                case 'ol': domNode.attribs.className = (domNode.attribs.className || '') + ' list-decimal text-left'; break;
-            }
-        }
-    }
-}
-
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
-    const parsedContent = parse(post.content, styling)
-    console.log(parsedContent)
+
     return (
         <div className='p-20'>
             <TopNav/>
             <article className='grid grid-cols-1  justify-center p-3 items-center text-center'>
                 <h1 className='font-pd text-2xl hover:underline decoration-cyan-300'>{post.title}</h1>
-                <div> {parsedContent} </div>
+                <div className='post-content' dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>
         </div>
     );

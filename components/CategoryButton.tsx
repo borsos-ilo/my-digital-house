@@ -8,6 +8,7 @@ type CategoryButtonProps = {
     onClick: () => void;
     className?: string;
     position: number;
+    isCategorySelected: boolean;
 };
 
 
@@ -15,19 +16,29 @@ type CategoryButtonProps = {
 // By using React.FC<CategoryButtonProps>, you are using the generic FC (Functional Component) type from React, 
 // which *automatically includes children* even though we're explicitly defining it here for clarity and to show 
 // how you might expand this type with more props in the future.
-const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick, className, position }) => {
+const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick,  position, isCategorySelected }) => {
     const colors: string[] = ['text-red-500', 'text-amber-500', 'text-green-500', 'text-cyan-500', 'text-indigo-500', 'text-pink-500', 'text-zinc-500'];
     const decorationColors: string[] = ['decoration-red-200', 'decoration-amber-200', 'decoration-green-200', 'decoration-cyan-200', 'decoration-indigo-200', 'decoration-pink-200', 'decoration-zinc-200'];
     const [color, setColor] = useState<number>(position)
+    const selectedClass = isCategorySelected ? "bg-gray-100" : "";
     useEffect(() => {
+        //setInterval is a standard JS function provided by Web API
+        // first parameter of the setInterval function is what we want to do every X miliseconds
+        // second is how much time we want to wait between doing the thing
         const intervalId = setInterval(() => {
             setColor(currentColor => (currentColor + 1) % colors.length);
-        }, 3000); // Change color every 5 seconds
+            // whatever the name passed to setColor be (e.g. 'hello'), it would always mean component's current state
+            // Therefore I don't need to declare an additional variable, it's just... how it's called?
+            // alternative that also works:
+            // setColor(currentColor => (currentColor + 1) % colors.length);
+        }, 1000); // Change color every second
 
         return () => clearInterval(intervalId); // Clean up the interval on component unmount
+    // dependency array is empty, which means that this effect 
     }, []);
     return (
-        <button onClick={onClick} className={`p-4 hover:underline  ${colors[color]} ${decorationColors[color]} $ font-lato`}>
+        <button onClick={onClick} 
+        className={`p-4 hover:underline  ${colors[color]} ${decorationColors[color]} ${selectedClass} font-lato`}>
             {children}
         </button>
     );

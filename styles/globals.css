@@ -4,12 +4,34 @@
 
 @import url('https://fonts.googxleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
 
+/* Apparently @layer utilities works such a way that I can just casually use a class I make up, like my-own-class */
+/* I don't need to declare it anywhere or anything like it */
+/* And then, in globals.css I can use @layer utilities and specify styling for elements in the object that is using my class */
 @layer utilities {
   .post-content p {
-    @apply text-pink-400
+    @apply font-sofia 
   } 
+  .post-content h1, h2, h3, h4, h5 {
+    @apply font-pd hover:underline decoration-cyan-500
+}
+
   .post-content h2 {
-    @apply text-lg text-cyan-300 hover:text-cyan-600
+    @apply text-4xl 
+  }
+  .post-content h3 {
+    @apply text-3xl
+  }
+  .post-content h4 {
+    @apply text-2xl
+  }
+  .post-content ol {
+    @apply list-decimal
+  }
+  .post-content li {
+    @apply ml-10
+  }
+  .post-content * {
+    @apply mb-3
   }
 }
 

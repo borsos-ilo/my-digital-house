@@ -7,23 +7,24 @@ import { GET_CATEGORIES, CategoriesData, CategoriesError } from '@/lib/queries/G
 type NavBarProps = {
     onCategorySelect: (id: string) => void;
     className?: string;
+    selectedCategory: string | null;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ onCategorySelect }) => {
-    
-
+const NavBar: React.FC<NavBarProps> = ({ onCategorySelect, selectedCategory }) => {
     const { loading, error, data } = useQuery<CategoriesData, CategoriesError>(GET_CATEGORIES);
-
+    console.log("in NavBar: " + selectedCategory)
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
-
-
     return (
-        <nav className='grid grid-cols-7'>
+        <nav className='grid lg:grid-cols-7 md:grid-cols-4 sm:grid-cols-2'>
             {data && data.categories.nodes
             .filter(category => category.name!=="Uncategorized")
             .map((category, index) => (
-                <CategoryButton key={category.id} position={index} onClick={() => onCategorySelect(category.id)} >
+                <CategoryButton 
+                key={category.id} 
+                position={index} 
+                onClick={() => onCategorySelect(category.id)}
+                isCategorySelected={selectedCategory===category.id} >
                     {category.name}
                 </CategoryButton>
             ))}

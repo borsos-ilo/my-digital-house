@@ -5,7 +5,7 @@ type NoProps={}
 
 const TopNav: React.FC<NoProps> = () => {
     return (
-        <div>
+        <div className='mb-10'>
             <Link href={'/'} className='font-pd'>
                 Mój cyfrowy dom
             </Link>

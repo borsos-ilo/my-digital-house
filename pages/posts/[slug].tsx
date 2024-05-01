@@ -52,11 +52,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
 
     return (
-        <div className='p-20'>
+        <div>
             <TopNav/>
-            <article className='grid grid-cols-1  justify-center p-3 items-center text-center'>
-                <h1 className='font-pd text-2xl hover:underline decoration-cyan-300'>{post.title}</h1>
-                <div className='post-content' dangerouslySetInnerHTML={{ __html: post.content }} />
+            <article className='grid grid-cols-1  justify-center lg:mx-40 md:mx-20 sm:mx-10 my-10 items-center text-center'>
+                <h1 className='font-pd text-6xl mb-10 hover:underline decoration-cyan-300'>{post.title}</h1>
+                <div className='post-content text-left' dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>
         </div>
     );

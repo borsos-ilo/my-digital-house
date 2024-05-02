@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googxleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* Apparently @layer utilities works such a way that I can just casually use a class I make up, like my-own-class */
 /* I don't need to declare it anywhere or anything like it */
 /* And then, in globals.css I can use @layer utilities and specify styling for elements in the object that is using my class */
 @layer utilities {
   .post-content p {
-    @apply font-sofia 
+    @apply font-vollkorn
   } 
   .post-content h1, h2, h3, h4, h5 {
-    @apply font-pd hover:underline decoration-cyan-500
+    @apply hover:underline decoration-cyan-500 text-center font-vollkorn font-semibold
 }
 
   .post-content h2 {

@@ -20,7 +20,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick,  pos
     const colors: string[] = ['text-red-500', 'text-amber-500', 'text-green-500', 'text-cyan-500', 'text-indigo-500', 'text-pink-500', 'text-zinc-500'];
     const decorationColors: string[] = ['decoration-red-200', 'decoration-amber-200', 'decoration-green-200', 'decoration-cyan-200', 'decoration-indigo-200', 'decoration-pink-200', 'decoration-zinc-200'];
     const [color, setColor] = useState<number>(position)
-    const selectedClass = isCategorySelected ? "bg-gray-100" : "";
+    const selectedClass = isCategorySelected ? "bg-gray-100/50" : "";
     useEffect(() => {
         //setInterval is a standard JS function provided by Web API
         // first parameter of the setInterval function is what we want to do every X miliseconds
@@ -38,7 +38,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick,  pos
     }, []);
     return (
         <button onClick={onClick} 
-        className={`p-4 hover:underline  ${colors[color]} ${decorationColors[color]} ${selectedClass} font-lato`}>
+        className={`p-2 hover:underline rounded-full  ${colors[color]} ${decorationColors[color]} ${selectedClass} font-lato`}>
             {children}
         </button>
     );

@@ -11,8 +11,8 @@ const config: Config = {
       fontFamily: {
         // // domine: ["Domine", "serif"],
         'pd': ['"Playfair Display"', 'serif'], // Previously added
-        'sofia': ['"Sofia Sans"', 'sans-serif'], // New addition
         'lato': ['Lato', 'sans-serif'],
+        'vollkorn': ['Vollkorn', 'serif'],
     },
   },
   plugins: [],

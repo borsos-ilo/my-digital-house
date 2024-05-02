@@ -1,13 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import client from '@/lib/apolloClient';
 import { GET_POST, PostData } from '@/lib/queries/GetPost';
-import parse, {domToReact, Element} from 'html-react-parser';
-import { ParsedUrlQuery } from 'querystring';
 import TopNav from '@/components/TopNav';
-
-interface IParams extends ParsedUrlQuery {
-    slug: string;
-}
 
 interface PostProps {
     title: string;
@@ -30,7 +24,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
             query: GET_POST,
             variables: { slug: params.slug }
         });
-        console.log("GraphQL Data:", data);  // Check the received data
         if (!data || !data.postBy) {
             return { notFound: true };
         }
@@ -54,8 +47,8 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
     return (
         <div>
             <TopNav/>
-            <article className='grid grid-cols-1  justify-center lg:mx-40 md:mx-20 sm:mx-10 my-10 items-center text-center'>
-                <h1 className='font-pd text-6xl mb-10 hover:underline decoration-cyan-300'>{post.title}</h1>
+            <article className='grid grid-cols-1 lg:mx-72 md:mx-36 sm:mx-16 border my-10'>
+                <h1 className='text-center text-6xl mb-10  hover:underline decoration-cyan-300 font-vollkorn font-semibold'>{post.title}</h1>
                 <div className='post-content text-left' dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>
         </div>

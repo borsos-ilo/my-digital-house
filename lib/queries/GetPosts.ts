@@ -1,6 +1,7 @@
 // graphql/postQueries.ts
 import { gql } from '@apollo/client';
 
+
 // GraphQL query
 export const GET_POSTS = gql`
 query GetPosts {

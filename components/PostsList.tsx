@@ -25,12 +25,12 @@ const PostsList: React.FC<PostListProps> = ({ category, className }) => {
         <div className={`grid grid-cols-3 gap-4`}>
             {filteredPosts?.map((post) => (
                 <div className='hover:border-l-2 pl-5 rounded-sm border-cyan-500 p-2 hover:bg-gray-50/80' key={post.id}>
-                    <h2 className='font-pd text-2xl hover:underline decoration-cyan-300'>
+                    <h2 className='font-vollkorn text-2xl hover:underline decoration-cyan-300'>
                         <Link href={`/posts/${post.slug}`}>
                             {post.title}
                         </Link>
                     </h2>
-                    <div className='font-sofia' dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+                    <div className='font-lato' dangerouslySetInnerHTML={{ __html: post.excerpt }} />
                 </div>
             ))}
         </div>

@@ -21,10 +21,11 @@ const PostsList: React.FC<PostListProps> = ({ category, className }) => {
         post.categories.nodes.some(cat => cat.id === category)
     ) : data?.posts.nodes;
 
+    if (filteredPosts?.length!==0) {
     return (
         <div className={`grid grid-cols-3 gap-4`}>
             {filteredPosts?.map((post) => (
-                <div className='hover:border-l-2 pl-5 rounded-sm border-cyan-500 p-2 hover:bg-gray-50/80' key={post.id}>
+                <div className='hover:border-l-2 pl-5 rounded-sm border-cyan-500 p-2 hover:bg-gray-100/50' key={post.id}>
                     <h2 className='font-vollkorn text-2xl hover:underline decoration-cyan-300'>
                         <Link href={`/posts/${post.slug}`}>
                             {post.title}
@@ -35,6 +36,13 @@ const PostsList: React.FC<PostListProps> = ({ category, className }) => {
             ))}
         </div>
     );
+    } else {
+        return (
+            <div>
+                <h2 className='text-2xl font-medium'>Tu jeszcze nic nie ma, ale kiedyś będzie :) </h2>
+            </div>
+        )
+    }
 };
 
 export default PostsList;

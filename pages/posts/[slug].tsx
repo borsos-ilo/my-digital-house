@@ -46,7 +46,7 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
 
     return (
         <div>
-            <article className='grid grid-cols-1 lg:mx-72 md:mx-36 sm:mx-16 border my-10'>
+            <article className='grid grid-cols-1 lg:mx-72 md:mx-36 sm:mx-16 my-10'>
                 <h1 className='text-center text-6xl mb-10  hover:underline decoration-cyan-300 font-vollkorn font-semibold'>{post.title}</h1>
                 <div className='post-content text-left' dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>

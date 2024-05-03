@@ -12,7 +12,7 @@
     @apply font-vollkorn
   } 
   .post-content h1, h2, h3, h4, h5 {
-    @apply hover:underline decoration-cyan-500 text-center font-vollkorn font-semibold
+    @apply hover:underline decoration-cyan-300 text-center font-vollkorn font-semibold
 }
 
   .post-content h2 {
@@ -25,10 +25,14 @@
     @apply text-2xl
   }
   .post-content ol {
-    @apply list-decimal
+    @apply list-decimal font-lato
   }
   .post-content li {
-    @apply ml-10
+    @apply ml-10 font-lato
+  }
+
+  .post-content p {
+    @apply font-lato
   }
   .post-content * {
     @apply mb-3

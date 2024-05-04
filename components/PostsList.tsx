@@ -26,12 +26,12 @@ const PostsList: React.FC<PostListProps> = ({ category, className }) => {
         <div className={`grid grid-cols-3 gap-4`}>
             {filteredPosts?.map((post) => (
                 <div className='hover:border-l-2 pl-5 rounded-sm border-cyan-500 p-2 hover:bg-gray-100/50' key={post.id}>
-                    <h2 className='font-vollkorn text-2xl hover:underline decoration-cyan-300'>
+                    <h2 className='font-arapey text-left text-2xl hover:underline decoration-cyan-300'>
                         <Link href={`/posts/${post.slug}`}>
                             {post.title}
                         </Link>
                     </h2>
-                    <div className='font-lato' dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+                    <div className='font-hs' dangerouslySetInnerHTML={{ __html: post.excerpt }} />
                 </div>
             ))}
         </div>
@@ -39,7 +39,7 @@ const PostsList: React.FC<PostListProps> = ({ category, className }) => {
     } else {
         return (
             <div>
-                <h2 className='text-2xl font-medium'>Tu jeszcze nic nie ma, ale kiedyś będzie :) </h2>
+                <h2 className='text-2xl font-arapey font-medium'>Tu jeszcze nic nie ma, ale kiedyś będzie :) </h2>
             </div>
         )
     }

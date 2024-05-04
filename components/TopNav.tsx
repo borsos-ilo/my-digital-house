@@ -11,7 +11,7 @@ const TopNav: React.FC<NoProps> = () => {
             <Link href={"/"} className='justify-self-start p-5 ml-5'>
                 <Image className='transition ease-in-out delay-50  hover:scale-125 duration-300' src={sunflower} alt="sunflower icon" width={50} height={50}/>
             </Link>
-            <Link href={'/o-mnie'} className='p-5 mr-5 justify-self-end self-center font-vollkorn text-2xl font-semibold hover:underline decoration-cyan-300'>
+            <Link href={'/o-mnie'} className='p-5 mr-5 justify-self-end self-center font-hs text-2xl font-semibold hover:underline decoration-cyan-300'>
                 O mnie
             </Link>
         </div>

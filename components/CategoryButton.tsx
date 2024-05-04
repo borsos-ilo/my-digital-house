@@ -22,6 +22,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick,  pos
     const [color, setColor] = useState<number>(position)
     const selectedClass = isCategorySelected ? "bg-gray-100/50" : "";
     useEffect(() => {
+        console.log('useEffect start')
         //setInterval is a standard JS function provided by Web API
         // first parameter of the setInterval function is what we want to do every X miliseconds
         // second is how much time we want to wait between doing the thing
@@ -33,15 +34,19 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ children, onClick,  pos
             // setColor(currentColor => (currentColor + 1) % colors.length);
         }, 1000); // Change color every second
 
-        return () => clearInterval(intervalId); // Clean up the interval on component unmount
+        return () =>{  
+            console.log('useEffect clean-up')
+            clearInterval(intervalId)
+        }; // Clean up the interval on component unmount
     // dependency array is empty, which means that this effect 
     }, []);
     return (
         <button onClick={onClick} 
-        className={`p-2 hover:underline rounded-full  ${colors[color]} ${decorationColors[color]} ${selectedClass} font-lato`}>
+        className={`p-2 hover:underline text-lg rounded-full  ${colors[color]} ${decorationColors[color]} ${selectedClass} font-mulish font-medium`}>
             {children}
         </button>
     );
+
 };
 
 export default CategoryButton;
